@@ -1,0 +1,1107 @@
+<div class="page">
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Material Loader</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default panel-labeld">
+                <div class="panel-body" data-ng-controller="LoaderCtrl">
+                    <md-button class="md-raised btn-w-md md-accent" ng-click="start()">Start the loader</md-button>
+                    <span class="space"></span>
+                    <md-button class="md-raised btn-w-md md-warn" ng-click="complete()">Complete it</md-button>
+
+                    <div class="callout callout-info no-margin-bottom">
+                        The loading bar will show at the top of the page.
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Material Tooltip</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body padding-xl">
+                    <div class="col-lg-8 col-lg-offset-2">
+
+                        <div ng-controller="TooltipDemo" ng-cloak>
+                            <md-content layout-padding="">
+                                <div class="text-center" style="padding-top: 40px;">
+                                    <md-button class="md-fab " aria-label="Insert Drive">
+                                        <md-icon class="zmdi zmdi-file" style="width: 24px; height: 24px;"></md-icon>
+                                        <md-tooltip md-visible="demo.showTooltip" md-direction="{{demo.tipDirection}}">
+                                            Insert Drive
+                                        </md-tooltip>
+                                    </md-button>
+                                </div>
+
+
+                                <div class="callout callout-info">The tooltip is visible when the button is hovered, focused, or touched. </div>
+                                <div class="callout callout-success">
+                                    <span>Additionally, the Tooltip's <code>md-visible</code> attribute can use data-binding to
+                                    programmatically show/hide itself. Toggle the checkbox below...</span>
+                                </div>
+                                    <md-checkbox ng-model="demo.showTooltip" style="padding-left:30px;">
+                                        Insert Drive
+                                    </md-checkbox>
+
+                                <div class="callout callout-success">
+                                    <p><code>md-direction</code> attribute can used to dynamically change the direction of the tooltip.<br>
+                                    Note: the direction default value is 'bottom'. </p>
+                                </div>
+                                <md-radio-group class="ui-md-radio-group-inline" ng-model="demo.tipDirection">
+                                     <md-radio-button value="left"> Left </md-radio-button>
+                                     <md-radio-button value="top">Top</md-radio-button>
+                                     <md-radio-button value="bottom" class="md-primary">Bottom</md-radio-button>
+                                     <md-radio-button value="right">Right</md-radio-button>
+                                 </md-radio-group>
+                            </md-content>
+                        </div>
+                    
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Material Toast</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body padding-xl">
+                    <div class="col-lg-8 col-lg-offset-2">
+
+                        <div ng-controller="ToastDemo">
+                            <div class="callout callout-info">
+                                <span>Toast can be dismissed with a swipe, a timer, or a button.</span><br>
+                                <span class="text-small">Notice the 'Show Custom' toast will not nudge the FABs positions since a custom parent was specified.</span>
+                            </div>
+
+                            <div layout="row" layout-sm="column" layout-align="space-around">
+                                <md-button ng-click="showSimpleToast()">
+                                    Show Simple
+                                </md-button>
+                                <md-button class="md-raised" ng-click="showActionToast()">
+                                    Show With Action
+                                </md-button>
+                                <md-button ng-click="showCustomToast()">
+                                    Show Custom
+                                </md-button>
+                            </div>
+
+                            <div class="divider divider-lg"></div>
+                            <h4>Toast Position: "{{getToastPosition()}}"</h4>
+                            <div class="divider"></div>
+                            <md-checkbox ng-repeat="(name, isSelected) in toastPosition" ng-model="toastPosition[name]"> {{name}} </md-checkbox>
+                            <script type="text/ng-template" id="toast-template.html">
+                                <md-toast class="md-toast-primary">
+                                    <span flex>This is a custom toast!</span>
+                                    <md-button ng-click="closeToast()">
+                                        Close
+                                    </md-button>
+                                </md-toast>
+                            </script>
+
+                            <div class="callout callout-success">
+                                <span>NOTE: The toast will show at the corner of the admin app</span>
+                            </div>    
+                        </div>
+                    
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Material Subheader</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body padding-xl">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> My Messages</div>
+                            <div class="panel-body no-padding">
+
+                                <div ng-controller="SubheaderDemo">
+
+                                    <md-content style="height: 450px;">
+                                        <section>
+                                            <md-subheader class="md-primary">Unread Messages</md-subheader>
+                                            <md-list layout-padding="">
+                                                <md-list-item class="md-3-line" ng-repeat="message in messages">
+                                                    <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+                                                    <div class="md-list-item-text">
+                                                        <h3>{{message.what}}</h3>
+                                                        <h4>{{message.who}}</h4>
+                                                        <p>
+                                                            {{message.notes}}
+                                                        </p>
+                                                    </div>
+                                                </md-list-item>
+                                            </md-list>
+                                        </section>
+
+                                        <section>
+                                            <md-subheader class="md-warn">Late Messages</md-subheader>
+                                            <md-list layout="column" layout-padding="">
+                                                <md-list-item class="md-3-line" ng-repeat="message in messages">
+                                                    <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+                                                    <div class="md-list-item-text">
+                                                        <h3>{{message.what}}</h3>
+                                                        <h4>{{message.who}}</h4>
+                                                        <p>
+                                                            {{message.notes}}
+                                                        </p>
+                                                    </div>
+                                                </md-list-item>
+                                            </md-list>
+                                        </section>
+
+                                        <section>
+                                            <md-subheader>Read Messages</md-subheader>
+                                            <md-list layout="column" layout-padding="">
+                                                <md-list-item class="md-3-line" ng-repeat="message in messages">
+                                                    <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+                                                    <div class="md-list-item-text">
+                                                        <h3>{{message.what}}</h3>
+                                                        <h4>{{message.who}}</h4>
+                                                        <p>
+                                                            {{message.notes}}
+                                                        </p>
+                                                    </div>
+                                                </md-list-item>
+                                            </md-list>
+                                        </section>
+
+                                        <section>
+                                            <md-subheader class="md-accent">Archived messages</md-subheader>
+                                            <md-list layout="column" layout-padding="">
+                                                <md-list-item class="md-3-line" ng-repeat="message in messages">
+                                                    <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+                                                    <div class="md-list-item-text">
+                                                        <h3>{{message.what}}</h3>
+                                                        <h4>{{message.who}}</h4>
+                                                        <p>
+                                                            {{message.notes}}
+                                                        </p>
+                                                    </div>
+                                                </md-list-item>
+                                            </md-list>
+                                        </section>
+                                    </md-content>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Material Dialog</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body padding-xl" data-ng-controller="DialogDemo">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h4>Basic Usage</h4>
+                        <div class="divider divider-md"></div>
+                        <md-button class="md-primary btn-w-md md-raised" ng-click="showAlert($event)"> Alert Dialog </md-button>
+                        <span class="space"></span>
+                        <md-button class="md-accent btn-w-md md-raised" ng-click="showConfirm($event)"> Confirm Dialog </md-button>
+                        <div class="callout callout-info">
+                            INFO: {{status}}
+                        </div>
+
+                        <div class="divider divider-lg divider-dashed"></div>
+                        <h4>Open From Close To</h4>
+                        <div class="divider divider-md"></div>
+                        <md-button class="md-accent md-raised" ng-click="openOffscreen()">
+                            Open From Top Left - Close Slide Down
+                        </md-button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Material Tab</h2>
+        </div>
+        <div class="col-md-12">        
+            <div class="row" data-ng-controller="TabsDemo" ng-cloak>
+                <div class="col-md-6">
+                    <section class="panel panel-default">
+                        <div class="panel-body no-padding">                
+                            <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
+                                <md-tab ng-repeat="tab in tabs"
+                                        ng-disabled="tab.disabled"
+                                        label="{{tab.title}}">
+                                    <div class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
+                                        <div ng-bind="tab.content"></div>
+                                        <br/>
+                                        <md-button class="md-primary md-raised" ng-click="removeTab( tab )" ng-disabled="tabs.length <= 1">Remove Tab</md-button>
+                                    </div>
+                                </md-tab>
+                            </md-tabs> 
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-6">
+                    <section class="panel panel-default">
+                        <div class="panel-body no-padding" >        
+                            <form ng-submit="addTab(tTitle,tContent)" layout="column" class="md-padding" style="padding-top: 0;">
+                                <h4 style="transform: uppercase;">Add a new Tab:</h4>
+
+                                <md-input-container>
+                                    <label for="label">Label</label>
+                                    <input type="text" id="label" ng-model="tTitle">
+                                </md-input-container>
+                                <md-input-container>
+                                    <label for="content">Content</label>
+                                    <input type="text" id="content" ng-model="tContent">
+                                </md-input-container>
+                                <md-button class=" md-primary md-raised" ng-disabled="!tTitle || !tContent" type="submit">Add Tab</md-button>
+                            </form>
+                        </div>
+                    </section>                    
+                </div>
+            </div> 
+        </div>
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Material Hover</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body padding-lg-h">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="ih-item ih-material">
+                                <a href="javascript:;">
+                                    <div class="img">
+                                        <img src="images/assets/600_400-1.jpg" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <div class="info-mask bg-primary"></div>
+                                        <div class="info-content">
+                                            <div class="info-inner">
+                                                <h3>Heading Here</h3>
+                                                <p>Description goes here</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>                            
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ih-item ih-material">
+                                <a href="javascript:;">
+                                    <div class="img">
+                                        <img src="images/assets/600_400-2.jpg" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <div class="info-mask bg-info"></div>
+                                        <div class="info-content">
+                                            <div class="info-inner">
+                                                <h3>Heading Here</h3>
+                                                <p>Description goes here</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>                                
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ih-item ih-material">
+                                <a href="javascript:;">
+                                    <div class="img">
+                                        <img src="images/assets/600_400-3.jpg" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <div class="info-mask bg-dark"></div>
+                                        <div class="info-content">
+                                            <div class="info-inner">
+                                                <h3>Heading Here</h3>
+                                                <p>Description goes here</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="section-header">Material Progressbar Linear</h2>
+            <section class="panel panel-default">
+                <div class="panel-body padding-xl" ng-controller="ProgressLinearDemo as vm" ng-cloak>
+
+                    <h4>Determinate</h4>
+                    <div class="divider"></div>
+                    <md-progress-linear md-mode="determinate" value="{{vm.determinateValue}}"></md-progress-linear>
+                    <div class="divider divider-lg divider-dashed"></div>
+                    <h4>Indeterminate</h4>
+                    <div class="divider"></div>
+                    <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+                    <div class="divider divider-lg divider-dashed"></div>
+                    <h4>Buffer</h4>
+                    <div class="divider"></div>
+                    <md-progress-linear class="md-warn" md-mode="{{vm.modes[0]}}" value="{{vm.determinateValue}}"
+                                        md-buffer-value="{{vm.determinateValue2}}"></md-progress-linear>
+                    <div class="divider divider-lg divider-dashed"></div>
+                    <h4>Query</h4>
+                    <div class="divider"></div>
+                    <md-progress-linear md-mode="{{vm.modes[1]}}"></md-progress-linear>
+
+                </div>
+            </section>            
+        </div>
+        <div class="col-md-6">
+            <h2 class="section-header">Material Progressbar Circular</h2>
+            <section class="panel panel-default">
+                <div class="panel-body padding-xl" ng-controller="ProgressCircularDemo as vm" ng-cloak>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Determinate</h4>
+                            <md-progress-circular md-mode="determinate" value="{{vm.determinateValue}}"></md-progress-circular>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Indeterminate</h4>
+                            <md-progress-circular md-mode="indeterminate"></md-progress-circular>                            
+                        </div>
+                    </div>                
+                    <div class="divider divider-lg divider-dashed"></div>
+
+                    <h4>Theming </h4>
+                    <div class="row">
+                        <div class="col-sm-2"><md-progress-circular class="md-hue-2" md-mode="{{vm.modes[0]}}" md-diameter="20px"></md-progress-circular></div>
+                        <div class="col-sm-2"><md-progress-circular class="md-accent" md-mode="{{vm.modes[1]}}" md-diameter="40"></md-progress-circular></div>
+                        <div class="col-sm-2"><md-progress-circular class="md-accent md-hue-1" md-mode="{{vm.modes[2]}}" md-diameter="60"></md-progress-circular></div>
+                        <div class="col-sm-2"><md-progress-circular class="md-warn md-hue-3" md-mode="{{vm.modes[3]}}" md-diameter="70"></md-progress-circular></div>
+                        <div class="col-sm-2"><md-progress-circular md-mode="{{vm.modes[4]}}" md-diameter="96"></md-progress-circular></div>
+                    </div>
+
+                </div>
+            </section>            
+        </div>        
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Modal</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body padding-xl" data-ng-controller="ModalDemoCtrl">
+                    <div class="col-lg-8 col-lg-offset-2">
+
+                        <script type="text/ng-template" id="myModalContent.html">
+                            <div class="modal-header">
+                                <h3>I am a modal!</h3>
+                            </div>
+                            <div class="modal-body">
+                                <span ng-repeat="item in items" class="list-unstyled">
+                                    <label class="ui-radio"><input name="radio1" type="radio" value="{{ item }}"    ng-checked="selected.item === item" ng-click="selected.item = item"><span>{{ item }}</span></label>
+                                </span>
+                                <div class="callout callout-info">
+                                    Selected: <b>{{ selected.item }}</b>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
+                                <button ui-wave class="btn btn-flat btn-primary" ng-click="ok()">OK</button>
+                            </div>
+                        </script>
+
+                        <md-button class="md-raised btn-w-md md-primary" ng-click="open()">Open me!</md-button>
+                        <span class="space"></span>
+                        <md-button class="md-raised btn-w-md md-accent" ng-click="open('lg')">Large modal</md-button>
+                        <span class="space"></span>
+                        <md-button class="md-raised btn-w-md" ng-click="open('sm')">Small modal</md-button>
+                        <div class="callout callout-info">
+                            <p>Selection from a modal: <strong>{{ selected }}</strong></p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Pagination</h2>
+        </div>
+        <div class="col-md-12" data-ng-controller="PaginationDemoCtrl">
+            <div class="row">
+                <div class="col-md-6">
+                    <section class="panel panel-default panel-labeled">
+                        <div class="panel-body">
+                            <uib-pagination class="pagination-sm" direction-links="true" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages" previous-text="&lsaquo;" next-text="&rsaquo;"></uib-pagination>
+                            <br>
+                            <uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+                            <br>
+                            <uib-pagination class="pagination-lg" total-items="totalItems" ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;"></uib-pagination>
+                            <br>
+                            <md-button class="md-raised btn-w-md md-primary" ng-click="setPage(3)">Set page to: 3</md-button><div class="divider"></div>
+                            <span class="panel-label">Sizing</span>             
+                        </div>
+                    </section>                    
+                </div>
+                <div class="col-md-6">
+                    <section class="panel panel-default panel-labeled">
+                        <div class="panel-body">
+                            <uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;"></uib-pagination>
+                            <br>
+                            <uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;"></uib-pagination>
+                            <div class="callout callout-info">
+                                <p class="no-margin">Page: {{bigCurrentPage}} / {{numPages}}</p>
+                                <span class="panel-label">Limit the Maximum Visible Buttons</span>
+                            </div>
+                        </div>
+                    </section>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Tabs</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body" data-ng-controller="TabsDemoCtrl">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="section-header">
+                                <h4>Simple Tabs</h4>
+                            </div>
+                            <uib-tabset class="ui-tab">
+                                <uib-tab heading="Static title">Static content here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, quidem, officiis, et ex laudantium sed cupiditate voluptatum libero nobis sit illum voluptates beatae ab et at.</uib-tab>
+                                <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
+                                    {{tab.content}}
+                                </uib-tab>
+                            </uib-tabset>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="section-header">
+                                <h4>Justified Tabs</h4>
+                            </div>
+                            <uib-tabset justified="true" class="ui-tab">
+                                <uib-tab heading="Justified">Justified content</uib-tab>
+                                <uib-tab heading="SJ">Short Labeled Justified content</uib-tab>
+                                <uib-tab heading="Long Justified">Long Labeled Justified content</uib-tab>
+                            </uib-tabset>
+                        </div>
+                    </div>
+
+                    <div class="divider divider-lg"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="section-header">
+                                <h4>Horizontal Tabs</h4>
+                            </div>
+                            <div class="ui-tab-container ui-tab-horizontal">
+                                <uib-tabset justified="false" class="ui-tab">
+                                    <uib-tab heading="Home dolor">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                                        <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
+                                    </uib-tab>
+                                    <uib-tab heading="Quod ea">
+                                        <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                                    </uib-tab>
+                                    <uib-tab heading="Earum sequi">
+                                        <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
+                                        <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
+                                    </uib-tab>
+                                </uib-tabset>
+                            </div>                     
+                        </div>
+                        <div class="col-md-6">
+                            <div class="section-header">
+                                <h4>Vertical Tabs</h4>
+                            </div>
+                            <div class="ui-tab-container ui-tab-vertical">
+                                <uib-tabset class="ui-tab">
+                                    <uib-tab heading="Home dolor">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                                        <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
+                                        <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
+                                    </uib-tab>
+                                    <uib-tab heading="Quod ea">
+                                        <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                                        <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
+                                    </uib-tab>
+                                    <uib-tab heading="Earum sequi">
+                                        <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
+                                        <p>Quod ea vel dolores earum veritatis quae sunt tempore consectetur adipisicing elit. Suscipit, odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                                    </uib-tab>
+                                </uib-tabset>
+                            </div>                     
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Labels & Badges</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <div class="panel panel-default panel-labeled">
+                        <div class="panel-body">
+                            <span class="panel-label">Labels</span>
+                            <p>
+                                <span class="label label-default">Default label</span>
+                                <span class="space"></span>
+                                <span class="label label-primary">Primary</span>
+                                <span class="space"></span>
+                                <span class="label label-success">Success</span>
+                            </p>
+                            <p>
+                                <span class="label label-info">Info</span>
+                                <span class="space"></span>
+                                <span class="label label-warning">Warning</span>
+                                <span class="space"></span>
+                                <span class="label label-danger">Danger</span> 
+                            </p>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default panel-labeled">
+                        <div class="panel-body">
+                            <p>
+                                <span class="badge">7</span>
+                                <span class="space"></span>
+                                <span class="badge badge-primary">1</span>
+                                <span class="space"></span>
+                                <span class="badge badge-success">2</span>
+                            </p>
+                            <p>
+                                <span class="badge badge-info">4</span>
+                                <span class="space"></span>
+                                <span class="badge badge-warning">8</span>
+                                <span class="space"></span>
+                                <span class="badge badge-danger">16</span>                                 
+                            </p>
+                            <span class="panel-label">Badges</span>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Popover & Tooltip</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <section class="panel panel-default panel-labeled">
+                        <div class="panel-body text-center">
+                            <button ui-wave popover-placement="top" popover-title="The Popover Title" uib-popover="On the Top! Here' goes the popover content..." popover-append-to-body="true" class="btn btn-w-lg btn-danger btn-gap">Popover on Top</button>
+                            <br>
+                            <button ui-wave popover-placement="right" popover-title="The Popover Title" uib-popover="On the Right! Here' goes the popover content..." popover-append-to-body="true" class="btn btn-w-lg btn-warning btn-gap">Popover on Right</button>
+                            <br>
+                            <button ui-wave popover-placement="bottom" popover-title="The Popover Title" uib-popover="On the Bottom! Here' goes the popover content..." popover-append-to-body="true" class="btn btn-w-lg btn-info btn-gap">Popover on Bottom</button>
+                            <br>
+                            <button ui-wave popover-placement="left" popover-title="The Popover Title" uib-popover="On the Left! Here' goes the popover content..." popover-append-to-body="true" class="btn btn-w-lg btn-success btn-gap">Popover on Left</button>
+                            <br>
+                            <button ui-wave uib-popover="On mouse enter!" popover-trigger="mouseenter" class="btn btn-w-lg btn-primary btn-gap">Popover on Mouseenter</button>
+                            <div class="divider"></div>
+                            <input type="text" value="Popover on Click" uib-popover="I appeared on focus! Click away and I'll vanish..."    popover-trigger="focus" class="form-control">
+                            <span class="panel-label">Popover</span>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-6">
+                    <section class="panel panel-default panel-labeled">
+                        <div class="panel-body text-center">
+                            <button ui-wave class="btn btn-w-lg btn-default btn-gap" tooltip-placement="top" uib-tooltip="On the Top!" tooltip-append-to-body="true">Tooltip on Top</button>
+                            <br>
+                            <button ui-wave class="btn btn-w-lg btn-primary btn-gap" tooltip-placement="left" uib-tooltip="On the Left!" tooltip-append-to-body="true">Tooltip on Left</button>
+                            <br>
+                            <button ui-wave class="btn btn-w-lg btn-success btn-gap" tooltip-placement="right" uib-tooltip="On the Right!" tooltip-append-to-body="true">Tooltip on Right</button>
+                            <br>
+                            <button ui-wave class="btn btn-w-lg btn-danger btn-gap" tooltip-animation="false" uib-tooltip="I don't fade. :-(" tooltip-append-to-body="true">Without Animation</button>
+                            <br>
+                            <button ui-wave class="btn btn-w-lg btn-warning btn-gap" tooltip-popup-delay='1000' uib-tooltip="Appears with delay" tooltip-append-to-body="true">Tooltip Delayed</button>
+                            <br>
+                            <button ui-wave class="btn btn-w-lg btn-info btn-gap" tooltip-placement="bottom" uib-tooltip="On the Bottom!" tooltip-append-to-body="true">Tooltip on Bottom</button>
+                            <span class="panel-label">Tooltip</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Accordion or Collapse</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="row" data-ng-controller="AccordionDemoCtrl">
+                <div class="col-md-6">
+                    <section class="panel panel-default panel-labeled">
+                        <div class="panel-body">
+                            <uib-accordion close-others="oneAtATime" class="ui-accordion">
+                                <uib-accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen">
+                                    This content is straight in the template.
+                                </uib-accordion-group>
+                                <uib-accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+                                    {{group.content}}
+                                </accordion-group>
+                            </uib-accordion>
+                            <span class="panel-label">Accordion</span>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-6">
+                    <section class="panel panel-default panel-labeled">
+                        <div class="panel-body">                
+                            <uib-accordion close-others="!oneAtATime" class="ui-accordion">
+                                <uib-accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen1">
+                                This content is straight in the template.
+                                </uib-accordion-group>
+                                <uib-accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+                                    {{group.content}}
+                                </accordion-group>
+                            </uib-accordion>
+                            <span class="panel-label">Collapse</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Collapse</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body padding-xl" data-ng-controller="CollapseDemoCtrl">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <md-button class="md-raised btn-w-md md-primary" ng-click="isCollapsed = !isCollapsed">Toggle collapse</md-button>
+                        <div class="divider divider-md"></div>
+                        <div uib-collapse="isCollapsed">
+                            <div class="well well-lg">Some content</div> 
+                        </div>  
+                    </div>          
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Alert</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body" data-ng-controller="AlertDemoCtrl">
+                    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+                    <md-button class="md-raised btn-w-md md-primary" ng-click="addAlert()">Add Alert</md-button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Ribbons</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="panel panel-default ui-ribbon-container">
+                                <div class="ui-ribbon-wrapper">
+                                    <div class="ui-ribbon">
+                                        30% Off
+                                    </div>
+                                </div>
+                                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Ribbon</div>
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-default ui-ribbon-container ui-ribbon-primary">
+                                <div class="ui-ribbon-wrapper">
+                                    <div class="ui-ribbon">
+                                        30% Off
+                                    </div>
+                                </div>
+                                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Ribbon-primary</div>
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-default ui-ribbon-container ui-ribbon-success">
+                                <div class="ui-ribbon-wrapper">
+                                    <div class="ui-ribbon">
+                                        30% Off
+                                    </div>
+                                </div>
+                                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Ribbon-success</div>
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="panel panel-default ui-ribbon-container ui-ribbon-info">
+                                <div class="ui-ribbon-wrapper">
+                                    <div class="ui-ribbon">
+                                        30% Off
+                                    </div>
+                                </div>
+                                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Ribbon-info</div>
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-default ui-ribbon-container ui-ribbon-warning">
+                                <div class="ui-ribbon-wrapper">
+                                    <div class="ui-ribbon">
+                                        30% Off
+                                    </div>
+                                </div>
+                                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Ribbon-warning</div>
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-default ui-ribbon-container ui-ribbon-danger">
+                                <div class="ui-ribbon-wrapper">
+                                    <div class="ui-ribbon">
+                                        30% Off
+                                    </div>
+                                </div>
+                                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Ribbon-danger</div>
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Panels</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Panel title</h3>
+                        </div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                        <div class="panel-footer">Panel footer</div>
+                    </div>
+                    <div class="panel panel-dark">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Panel title</h3>
+                        </div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Panel title</h3>
+                        </div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Panel title</h3>
+                        </div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Panel title</h3>
+                        </div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Panel title</h3>
+                        </div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Panel title</h3>
+                        </div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Callout</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="callout callout-success">
+                        <h4>Callout heading</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+                    </div>
+                    <div class="callout callout-info">
+                        <h4>Callout heading</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+                    </div>
+                    <div class="callout callout-warning">
+                        <h4>Callout heading</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+                    </div>
+                    <div class="callout callout-danger">
+                        <h4>Callout heading</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Well</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="well well-sm">Look, I'm in a small well!</div>
+                    <div class="well">Look, I'm in a well!</div>
+                    <div class="well well-lg">Look, I'm in a large well!</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Scrollable Box</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Scrollable Box</div>
+                                <div class="panel-body ui-map " data-slim-scroll data-scroll-height="200px">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, tenetur, repellat obcaecati unde esse doloribus accusamus exercitationem vitae corporis blanditiis aspernatur quibusdam porro rerum voluptatum quos eligendi necessitatibus enim! Maiores, doloribus, fuga, perspiciatis cupiditate aperiam repellendus natus nisi recusandae rerum optio consectetur nemo reprehenderit nesciunt molestiae at. Molestiae, nesciunt inventore dignissimos itaque exercitationem vero aliquam provident aperiam repudiandae nostrum. Ipsa, possimus, natus culpa magni rem iusto ut quisquam cupiditate aspernatur nemo sed aliquam quam illum illo quos dolor animi ipsum dolorem sunt beatae officia facere voluptatem omnis! Sapiente, illo voluptatibus amet omnis optio labore nesciunt porro facere praesentium laudantium molestiae voluptas eos incidunt quod nulla. Provident, debitis, odit qui ab facere adipisci laborum ea necessitatibus sapiente voluptatibus minima inventore veritatis unde nemo ipsa quisquam dolorum autem et minus repudiandae nostrum aliquam numquam aperiam similique vero delectus maiores non aliquid laboriosam eius impedit cum vel a corporis consequuntur natus earum suscipit. Repellat, laborum, cupiditate aperiam distinctio vero dolor est quibusdam sit rerum expedita tempore reiciendis quidem quisquam deserunt autem pariatur eos fugiat qui hic temporibus ullam dicta voluptatem sequi at iusto! Accusamus, iure, optio temporibus molestiae ab dolor blanditiis veritatis corporis eius reiciendis sed molestias obcaecati dolorem similique rerum illo excepturi.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-body ui-map " data-slim-scroll data-scroll-height="240px">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, tenetur, repellat obcaecati unde esse doloribus accusamus exercitationem vitae corporis blanditiis aspernatur quibusdam porro rerum voluptatum quos eligendi necessitatibus enim! Maiores, doloribus, fuga, perspiciatis cupiditate aperiam repellendus natus nisi recusandae rerum optio consectetur nemo reprehenderit nesciunt molestiae at. Molestiae, nesciunt inventore dignissimos itaque exercitationem vero aliquam provident aperiam repudiandae nostrum. Ipsa, possimus, natus culpa magni rem iusto ut quisquam cupiditate aspernatur nemo sed aliquam quam illum illo quos dolor animi ipsum dolorem sunt beatae officia facere voluptatem omnis! Sapiente, illo voluptatibus amet omnis optio labore nesciunt porro facere praesentium laudantium molestiae voluptas eos incidunt quod nulla. Provident, debitis, odit qui ab facere adipisci laborum ea necessitatibus sapiente voluptatibus minima inventore veritatis unde nemo ipsa quisquam dolorum autem et minus repudiandae nostrum aliquam numquam aperiam similique vero delectus maiores non aliquid laboriosam eius impedit cum vel a corporis consequuntur natus earum suscipit. Repellat, laborum, cupiditate aperiam distinctio vero dolor est quibusdam sit rerum expedita tempore reiciendis quidem quisquam deserunt autem pariatur eos fugiat qui hic temporibus ullam dicta voluptatem sequi at iusto! Accusamus, iure, optio temporibus molestiae ab dolor blanditiis veritatis corporis eius reiciendis sed molestias obcaecati dolorem similique rerum illo excepturi.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Material Whiteframe</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default panel-labeld">
+                <div class="panel-body">
+                    <div layout="row" class="whiteframedemoBasicUsage" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;">
+                        <md-whiteframe class="md-whiteframe-1dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-1dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-2dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-2dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-3dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-3dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-4dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-4dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-5dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-5dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-6dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-6dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-7dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-7dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-8dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-8dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-9dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-9dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-10dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-10dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-11dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-11dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-12dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-12dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-13dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-13dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-14dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-14dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-15dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-15dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-16dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-16dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-17dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-17dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-18dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-18dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-19dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-19dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-20dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-20dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-21dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-21dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-22dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-22dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-23dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-23dp</span>
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-24dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                            <span>.md-whiteframe-24dp</span>
+                        </md-whiteframe>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>
+
+
