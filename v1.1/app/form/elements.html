@@ -603,7 +603,7 @@
                             <label for="" class="col-sm-2">Input with icons</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control">
-                                <span class="icon glyphicon glyphicon-star"></span>
+                                <span class="icon fa fa-star"></span>
                             </div>
                         </div>
                         <div class="divider divider-dashed divider-lg pull-in"></div>
@@ -765,7 +765,7 @@
                                        date-disabled="disabled(date, mode)" 
                                        ng-required="true" 
                                        close-text="Close" />
-                                <span class="input-group-addon" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></span>
+                                <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
                             </div>
                             <div class="callout callout-info">
                                 <p>Date is: {{dt | date:'fullDate'}}</p>
@@ -853,8 +853,8 @@
                             readonly="isReadonly"
                             on-hover="hoveringOver(value)"
                             on-leave="overStar = null"
-                            state-on="'glyphicon-star'"
-                            state-off="'glyphicon-star-empty'"></uib-rating>
+                            state-on="'fa fa-star'"
+                            state-off="'fa fa-star-o'"></uib-rating>
                             <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
 
                             <div class="callout callout-info">
@@ -874,32 +874,32 @@
                                 ng-model="x1"
                                 max="6"
                                 readonly="true"
-                                state-on="'glyphicon-star'"
-                                state-off="'glyphicon-star-empty'"></uib-rating>
+                                state-on="'fa fa-star'"
+                                state-off="'fa fa-star-o'"></uib-rating>
                             </div>
                             <div ng-init="x2 = 5">
                                 <uib-rating class="ui-rating size-h3 ui-rating-info"
                                 ng-model="x2"
                                 max="7"
                                 readonly="true"
-                                state-on="'glyphicon-star'"
-                                state-off="'glyphicon-star-empty'"></uib-rating>
+                                state-on="'fa fa-star'"
+                                state-off="'fa fa-star-o'"></uib-rating>
                             </div>
                             <div ng-init="x3 = 6">
                                 <uib-rating class="ui-rating size-h2 ui-rating-warning"
                                 ng-model="x3"
                                 max="8"
                                 readonly="true"
-                                state-on="'glyphicon-star'"
-                                state-off="'glyphicon-star-empty'"></uib-rating>
+                                state-on="'fa fa-star'"
+                                state-off="'fa fa-star-o'"></uib-rating>
                             </div>
                             <div ng-init="x4 = 7">
                                 <uib-rating class="ui-rating size-h1 ui-rating-danger"
                                 ng-model="x4"
                                 max="9"
                                 readonly="true"
-                                state-on="'glyphicon-star'"
-                                state-off="'glyphicon-star-empty'"></uib-rating>
+                                state-on="'fa fa-star'"
+                                state-off="'fa fa-star-o'"></uib-rating>
                             </div>
                             <span class="panel-label">Colorful and Sizing</span>
                         </div>
