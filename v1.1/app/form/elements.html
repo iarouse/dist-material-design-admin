@@ -182,37 +182,31 @@
 
                             <div class="divider divider-lg divider-dashed"></div>
                             <h4>Syncing</h4>
-
-                            <div class="md-padding checkboxdemoSyncing" ng-cloak style="height:250px">
-                                <div layout="row" layout-wrap>
-                                    <div flex="100" flex-gt-sm="50" layout="column">
-                                        <fieldset class="standard" flex>
-                                            <div layout="row" layout-wrap flex>
-                                                <div flex="50" ng-repeat="item in items">
-                                                    <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
-                                                        {{ item }} <span ng-if="exists(item, selected)">selected</span>
-                                                    </md-checkbox>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div flex="100" flex-gt-sm="50" layout="column">
-                                        <fieldset class="standard" flex>
-                                            <div layout="row" layout-wrap flex>
-                                                <div ng-repeat="item in items" class="standard" flex="50">
-                                                    <label>
-                                                        <input type="checkbox" ng-checked="exists(item, selected)"
-                                                                     ng-click="toggle(item, selected)"/>
-                                                        {{ item }}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </div>
+                            <div class="divider divider-xl"></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div layout="row" layout-wrap flex>
+                                        <div flex="50" ng-repeat="item in items">
+                                            <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                                                {{ item }} <span ng-if="exists(item, selected)">selected</span>
+                                            </md-checkbox>
+                                        </div>
+                                    </div>                                    
                                 </div>
-                                <div class="callout callout-info">
-                                    <span>Selected Items: {{selected | json}}</span>
+                                <div class="col-md-6">
+                                    <div layout="row" layout-wrap flex>
+                                        <div ng-repeat="item in items" class="standard" flex="50">
+                                            <label>
+                                                <input type="checkbox" ng-checked="exists(item, selected)"
+                                                             ng-click="toggle(item, selected)"/>
+                                                {{ item }}
+                                            </label>
+                                        </div>
+                                    </div>                                    
                                 </div>
+                            </div>
+                            <div class="callout callout-info">
+                                <span>Selected Items: {{selected | json}}</span>
                             </div>
 
                         </div>
